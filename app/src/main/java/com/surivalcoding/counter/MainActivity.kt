@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("onCreate")
         setContentView(R.layout.activity_main)
 
         // Button
@@ -27,5 +28,30 @@ class MainActivity : AppCompatActivity() {
             // UI 갱신
             countTextView.text = viewModel.count.toString()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("onResume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("onStart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("onDestroy")
     }
 }
