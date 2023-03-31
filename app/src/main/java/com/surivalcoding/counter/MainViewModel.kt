@@ -1,7 +1,11 @@
 package com.surivalcoding.counter
 
+import androidx.lifecycle.ViewModel
+
 // ViewModel
-class MainViewModel(val counter: Counter) {
+class MainViewModel : ViewModel() {
+    val counter = CounterImpl()
+
     val count: Int
         get() = counter.value
 
