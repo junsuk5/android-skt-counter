@@ -9,5 +9,4 @@ class CounterImpl: Counter {
     override fun count() {
         number++
     }
-
 }
