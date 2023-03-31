@@ -1,32 +1,31 @@
 package com.surivalcoding.counter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.surivalcoding.counter.databinding.ActivityMainBinding
 
 // View
 class MainActivity : AppCompatActivity() {
+    // 늦은 초기화
+    private lateinit var binding: ActivityMainBinding
+
     // 상태
     private val viewModel = MainViewModel(CounterImpl())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         println("onCreate")
-        setContentView(R.layout.activity_main)
 
-        // Button
-        val addButton = findViewById<Button>(R.id.add_button)
-        // 가운데 숫자
-        val countTextView = findViewById<TextView>(R.id.count_text_view)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 동작
-        addButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             // 값이 변경 (로직)
             viewModel.addButtonClick()
 
             // UI 갱신
-            countTextView.text = viewModel.count.toString()
+            binding.countTextView.text = viewModel.count.toString()
         }
     }
 
