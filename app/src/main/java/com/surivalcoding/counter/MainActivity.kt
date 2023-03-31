@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             // 값이 변경 (로직)
             viewModel.addButtonClick()
-            viewModel.addButtonClick()
 
             // UI 갱신
             countTextView.text = viewModel.count.toString()

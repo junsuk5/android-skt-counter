@@ -7,7 +7,6 @@ import org.junit.Before
 import org.junit.Test
 
 class CounterImplTest {
-
     @Before
     fun setUp() {
     }
