@@ -22,15 +22,16 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.countTextView.text = viewModel.count.toString()
+        // UI 갱신
+        viewModel.countLiveData.observe(this) { count ->
+            binding.countTextView.text = count.toString()
+        }
+
 
         // 동작
         binding.addButton.setOnClickListener {
             // 값이 변경 (로직)
             viewModel.addButtonClick()
-
-            // UI 갱신
-            binding.countTextView.text = viewModel.count.toString()
         }
     }
 

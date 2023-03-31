@@ -1,17 +1,22 @@
 package com.surivalcoding.counter
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 // ViewModel
 class MainViewModel : ViewModel() {
-    val counter = CounterImpl()
+    private val counter = CounterImpl()
 
-    val count: Int
-        get() = counter.value
+    private val _countLiveData = MutableLiveData(0)
+
+    val countLiveData: LiveData<Int>
+        get() = _countLiveData
 
     // Actions
     fun addButtonClick() {
         // 카운팅 하자
         counter.count()
+        _countLiveData.value = counter.value
     }
 }
