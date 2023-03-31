@@ -7,7 +7,10 @@ import com.surivalcoding.counter.databinding.ActivityMainBinding
 // View
 class MainActivity : AppCompatActivity() {
     // 늦은 초기화
-    private lateinit var binding: ActivityMainBinding
+    // by : 델리게이트 (위임)
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     // 상태
     private val viewModel = MainViewModel(CounterImpl())
@@ -16,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         println("onCreate")
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 동작
