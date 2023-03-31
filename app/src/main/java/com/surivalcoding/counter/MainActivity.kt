@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
+// View
 class MainActivity : AppCompatActivity() {
     // 상태
-    private var count = 0
+    private val viewModel = MainViewModel(CounterImpl())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         // 동작
         addButton.setOnClickListener {
-            count++
-            countTextView.text = count.toString()
+            // 값이 변경 (로직)
+            viewModel.addButtonClick()
+
+            // UI 갱신
+            countTextView.text = viewModel.count.toString()
         }
     }
 }
